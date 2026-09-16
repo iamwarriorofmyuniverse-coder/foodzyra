@@ -1,9 +1,11 @@
 // Foodzyra PWA Service Worker
-const CACHE_NAME = 'foodzyra-cache-v1';
+const CACHE_NAME = 'foodzyra-cache-v2';
 const PRECACHE_ASSETS = [
   '/',
   '/index.html',
-  '/manifest.json'
+  '/manifest.json',
+  '/icon-192.png',
+  '/icon-512.png'
 ];
 
 self.addEventListener('install', (event) => {
