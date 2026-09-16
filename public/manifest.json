@@ -1,0 +1,43 @@
+{
+  "name": "Foodzyra — Surplus Food Rescue & AI Nutrition",
+  "short_name": "Foodzyra",
+  "description": "Rescue delicious surplus food at up to 70% off or donate to local NGOs. AI Food Vision & USDA Nutrition.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0b1120",
+  "theme_color": "#2c7a56",
+  "scope": "/",
+  "categories": ["food", "shopping", "lifestyle", "sustainability"],
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect width='512' height='512' rx='128' fill='%232c7a56'/><path d='M256 96a160 160 0 1 0 160 160 64 64 0 0 1-80-80 64 64 0 0 1-80-80z' fill='none' stroke='white' stroke-width='32' stroke-linecap='round' stroke-linejoin='round'/><path d='M200 200c8-24 32-40 56-40 32 0 56 24 56 56 0 40-56 72-56 72s-56-32-56-72' fill='none' stroke='%23d7ee9f' stroke-width='28' stroke-linecap='round' stroke-linejoin='round'/></svg>",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Explore Surplus Food",
+      "short_name": "Explore",
+      "description": "Discover nearby bakery, meal, and grocery surplus deals in India",
+      "url": "/?page=customer",
+      "icons": [{ "src": "/favicon.ico", "sizes": "64x64" }]
+    },
+    {
+      "name": "Post Surplus / Share Food",
+      "short_name": "Post Food",
+      "description": "Upload a photo and publish surplus food to the community",
+      "url": "/?action=post",
+      "icons": [{ "src": "/favicon.ico", "sizes": "64x64" }]
+    },
+    {
+      "name": "AI Vision Studio",
+      "short_name": "Scan Plate",
+      "description": "Scan food with camera and get instant USDA foundation nutrition",
+      "url": "/?action=scan",
+      "icons": [{ "src": "/favicon.ico", "sizes": "64x64" }]
+    }
+  ]
+}
