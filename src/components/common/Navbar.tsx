@@ -469,6 +469,21 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
             >
               Profile & Personal Impact
             </button>
+
+            {/* Mobile Theme Studio Trigger */}
+            <button
+              onClick={() => { setIsCustomizerOpen(true); setIsMobileMenuOpen(false); }}
+              className="w-full text-left px-3 py-2 rounded-xl text-sm font-semibold text-forest-700 dark:text-forest-300 bg-forest-50 dark:bg-forest-950/40 flex items-center justify-between mt-1"
+            >
+              <div className="flex items-center gap-2">
+                <Palette className="w-4 h-4 text-forest-600" />
+                <span>Customize Theme & Colors</span>
+              </div>
+              <div
+                className="w-3 h-3 rounded-full border border-white shadow-xs"
+                style={{ backgroundColor: THEME_PRESETS_META[config.preset]?.previewColor || '#2c7a56' }}
+              />
+            </button>
           </div>
 
           <div className="pt-3 border-t border-slate-200">

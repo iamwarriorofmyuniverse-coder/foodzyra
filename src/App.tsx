@@ -153,6 +153,9 @@ const AppContent: React.FC = () => {
         }}
       />
 
+      {/* Theme & Appearance Customizer Studio */}
+      <ThemeCustomizerModal />
+
       {/* Mobile Install App Banner */}
       <MobileInstallBanner />
 
