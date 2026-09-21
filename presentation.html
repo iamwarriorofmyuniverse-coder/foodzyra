@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Foodzyra — CIET Internal Hackathon 2026 Presentation</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #0b0f19;
+      color: #f8fafc;
+      overflow: hidden;
+    }
+    .font-mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .slide {
+      display: none;
+      height: 100vh;
+      width: 100vw;
+      padding: 3rem 4.5rem;
+      animation: fadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .slide.active {
+      display: flex;
+      flex-direction: column;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.985); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    .glass-card {
+      background: rgba(30, 41, 59, 0.7);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    }
+    .accent-gradient {
+      background: linear-gradient(135deg, #22c55e 0%, #14b8a6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    @media print {
+      body { overflow: visible; }
+      .slide { display: flex !important; height: auto; min-height: 100vh; page-break-after: always; }
+      .no-print { display: none !important; }
+    }
+  </style>
+</head>
+<body class="relative select-none">
+
+  <!-- Top bar / Presentation header -->
+  <header class="no-print absolute top-0 left-0 right-0 h-14 px-8 flex items-center justify-between z-50 border-b border-slate-800/80 bg-slate-950/60 backdrop-blur-md">
+    <div class="flex items-center gap-3">
+      <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+        CIET INTERNAL HACKATHON 2026
+      </span>
+      <span class="text-xs text-slate-400 font-mono">TEAM ULTRONATE • AI & DS</span>
+    </div>
+    <div class="flex items-center gap-3">
+      <span id="slideCounter" class="text-xs font-mono text-slate-400 bg-slate-800/60 px-3 py-1 rounded-md border border-slate-700">Slide 1 / 9</span>
+      <button onclick="toggleFullscreen()" class="p-2 text-slate-400 hover:text-white rounded hover:bg-slate-800 transition" title="Toggle Fullscreen">
+        <i class="fa-solid fa-expand text-sm"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- SLIDE 1: Title & Team -->
+  <section class="slide active justify-center" id="slide-1">
+    <div class="max-w-6xl mx-auto w-full pt-6">
+      <div class="inline-block mb-3 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 text-xs font-bold tracking-wider">
+        CIET INTERNAL HACKATHON 2026 • OFFICIAL PROJECT PITCH
+      </div>
+      <h1 class="text-5xl font-extrabold tracking-tight mb-3">
+        Food Waste Reduction Platform
+      </h1>
+      <h2 class="text-2xl font-bold accent-gradient mb-2">
+        Foodzyra: Rescue. Redistribute. Recover. Regenerate.
+      </h2>
+      <p class="text-slate-400 text-sm italic mb-8 max-w-2xl">
+        "Every Resource. Zero Waste. An intelligent multi-tier bioeconomy platform preventing edible food loss and channeling organic waste to high-value circular uses."
+      </p>
+
+      <div class="grid grid-cols-12 gap-6">
+        <!-- Left: Project Context -->
+        <div class="col-span-4 glass-card rounded-2xl p-6 border-slate-700/60">
+          <h3 class="text-xs font-mono font-bold text-emerald-400 uppercase tracking-wider mb-4 flex items-center gap-2">
+            <i class="fa-solid fa-layer-group"></i> Project Metadata
+          </h3>
+          <div class="space-y-3 text-sm">
+            <div>
+              <p class="text-xs text-slate-400">Team Name</p>
+              <p class="font-bold text-slate-100">Team ULTRONATE</p>
+            </div>
+            <div>
+              <p class="text-xs text-slate-400">Department</p>
+              <p class="font-semibold text-slate-200">Artificial Intelligence & Data Science</p>
+            </div>
+            <div>
+              <p class="text-xs text-slate-400">Institution</p>
+              <p class="text-slate-300">Coimbatore Institute of Engineering and Technology</p>
+            </div>
+            <div>
+              <p class="text-xs text-slate-400">Track</p>
+              <p class="text-emerald-400 font-medium">Smart Sustainable Cities & Bioeconomy</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Team Members -->
+        <div class="col-span-8 glass-card rounded-2xl p-6 border-slate-700/60">
+          <h3 class="text-xs font-mono font-bold text-teal-400 uppercase tracking-wider mb-4 flex items-center gap-2">
+            <i class="fa-solid fa-users"></i> Team Members (AI & DS)
+          </h3>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="bg-slate-900/60 p-3.5 rounded-xl border border-slate-800">
+              <div class="flex items-center justify-between mb-1">
+                <span class="font-bold text-slate-100">Manish V</span>
+                <span class="text-xs font-mono text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded">71052508043</span>
+              </div>
+              <p class="text-xs text-slate-400">AI Models, Vision Pipeline & Architecture Lead</p>
+            </div>
+            <div class="bg-slate-900/60 p-3.5 rounded-xl border border-slate-800">
+              <div class="flex items-center justify-between mb-1">
+                <span class="font-bold text-slate-100">Dharshan C</span>
+                <span class="text-xs font-mono text-teal-400 bg-teal-950/60 px-2 py-0.5 rounded">71052508022</span>
+              </div>
+              <p class="text-xs text-slate-400">Full-Stack Development, Mobile PWA & Offline Engine</p>
+            </div>
+            <div class="bg-slate-900/60 p-3.5 rounded-xl border border-slate-800">
+              <div class="flex items-center justify-between mb-1">
+                <span class="font-bold text-slate-100">Arivarasu M</span>
+                <span class="text-xs font-mono text-amber-400 bg-amber-950/60 px-2 py-0.5 rounded">71052508010</span>
+              </div>
+              <p class="text-xs text-slate-400">Algorithm Design & Geolocation Dispatch System</p>
+            </div>
+            <div class="bg-slate-900/60 p-3.5 rounded-xl border border-slate-800">
+              <div class="flex items-center justify-between mb-1">
+                <span class="font-bold text-slate-100">Gajendran K</span>
+                <span class="text-xs font-mono text-indigo-400 bg-indigo-950/60 px-2 py-0.5 rounded">71052508025</span>
+              </div>
+              <p class="text-xs text-slate-400">EPA Hierarchy Engine, Analytics & User Experience</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 2: Problem Statement -->
+  <section class="slide justify-center" id="slide-2">
+    <div class="max-w-6xl mx-auto w-full pt-6">
+      <div class="inline-block mb-2 px-3 py-1 rounded-full bg-rose-500/10 text-rose-400 border border-rose-500/30 text-xs font-bold tracking-wider">
+        PROBLEM STATEMENT
+      </div>
+      <h2 class="text-4xl font-extrabold tracking-tight mb-2">The Global Food Waste & Hunger Paradox</h2>
+      <p class="text-slate-400 text-sm mb-6">Massive commercial waste occurs while hunger persists due to lack of coordination and binary disposal models.</p>
+
+      <div class="grid grid-cols-3 gap-5 mb-6">
+        <div class="glass-card rounded-2xl p-5 border-amber-500/30 bg-amber-950/10">
+          <div class="text-3xl font-extrabold text-amber-400 mb-1">1.05 Billion T</div>
+          <div class="text-sm font-bold text-slate-200 mb-2">Global Food Wasted Yearly</div>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            19% of all food available to consumers is discarded annually while 783 million people suffer from chronic hunger (UNEP 2024).
+          </p>
+        </div>
+        <div class="glass-card rounded-2xl p-5 border-rose-500/30 bg-rose-950/10">
+          <div class="text-3xl font-extrabold text-rose-400 mb-1">8 – 10% GHG</div>
+          <div class="text-sm font-bold text-slate-200 mb-2">Methane & Carbon Footprint</div>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Rotting landfill food generates lethal methane emissions (CH4), carrying 28x greater global warming potential than CO2.
+          </p>
+        </div>
+        <div class="glass-card rounded-2xl p-5 border-blue-500/30 bg-blue-950/10">
+          <div class="text-3xl font-extrabold text-blue-400 mb-1">$1 Trillion</div>
+          <div class="text-sm font-bold text-slate-200 mb-2">Annual Economic Loss</div>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Loss of raw materials, clean water, agricultural effort, and merchant revenue caused by fragmented logistics.
+          </p>
+        </div>
+      </div>
+
+      <div class="glass-card rounded-2xl p-6 border-slate-700">
+        <h3 class="text-xs font-mono font-bold text-emerald-400 uppercase tracking-wider mb-3">Key Systemic Failures</h3>
+        <div class="grid grid-cols-3 gap-6 text-xs text-slate-300">
+          <div class="flex gap-2.5">
+            <i class="fa-solid fa-triangle-exclamation text-rose-400 text-sm mt-0.5"></i>
+            <div>
+              <strong class="text-slate-100 block mb-1">Information Disconnection:</strong>
+              Donors lack instant, automated matching channels to notify nearby NGOs before perishable items expire.
+            </div>
+          </div>
+          <div class="flex gap-2.5">
+            <i class="fa-solid fa-trash-can text-amber-400 text-sm mt-0.5"></i>
+            <div>
+              <strong class="text-slate-100 block mb-1">Binary Disposal Mindset:</strong>
+              Unsold meals are either sold at 100% price or dumped directly in bins, missing dynamic flash-sale recovery.
+            </div>
+          </div>
+          <div class="flex gap-2.5">
+            <i class="fa-solid fa-arrows-split-up-and-left text-teal-400 text-sm mt-0.5"></i>
+            <div>
+              <strong class="text-slate-100 block mb-1">Zero Cascade Recovery:</strong>
+              No automated pipeline exists to sort inedible fractions into animal feed, biomethane energy, or composting.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 3: Proposed Solution -->
+  <section class="slide justify-center" id="slide-3">
+    <div class="max-w-6xl mx-auto w-full pt-6">
+      <div class="inline-block mb-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 text-xs font-bold tracking-wider">
+        PROPOSED SOLUTION & INNOVATION
+      </div>
+      <h2 class="text-4xl font-extrabold tracking-tight mb-2">4-Tier Circular Bioeconomy Platform</h2>
+      <p class="text-slate-400 text-sm mb-6">Foodzyra dynamically matches every fraction of food to its highest and best circular use (US EPA Scale Aligned).</p>
+
+      <div class="grid grid-cols-4 gap-4">
+        <div class="glass-card rounded-2xl p-5 border-emerald-500/40 hover:border-emerald-400 transition">
+          <div class="w-9 h-9 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center mb-3">
+            <i class="fa-solid fa-hand-holding-heart text-lg"></i>
+          </div>
+          <div class="text-xs font-mono font-bold text-emerald-400 uppercase">Tier 1: Redistribute</div>
+          <h3 class="text-base font-bold text-slate-100 mt-1 mb-2">Edible Surplus to NGOs</h3>
+          <p class="text-xs text-slate-400 leading-relaxed mb-4">
+            Instant automated routing of prepared meals from restaurants & caterers to verified food banks, orphanages & shelters.
+          </p>
+          <span class="text-[11px] font-mono text-emerald-300 bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-800">
+            ✓ 0% Waste • 100% Free
+          </span>
+        </div>
+
+        <div class="glass-card rounded-2xl p-5 border-teal-500/40 hover:border-teal-400 transition">
+          <div class="w-9 h-9 rounded-xl bg-teal-500/20 text-teal-400 flex items-center justify-center mb-3">
+            <i class="fa-solid fa-tags text-lg"></i>
+          </div>
+          <div class="text-xs font-mono font-bold text-teal-400 uppercase">Tier 2: Recover</div>
+          <h3 class="text-base font-bold text-slate-100 mt-1 mb-2">Dynamic Flash Market</h3>
+          <p class="text-xs text-slate-400 leading-relaxed mb-4">
+            Commercial near-expiry items offered at dynamic discounts (50–70% off) to students and budget-conscious buyers.
+          </p>
+          <span class="text-[11px] font-mono text-teal-300 bg-teal-950/60 px-2 py-0.5 rounded border border-teal-800">
+            ✓ Algorithmic Pricing
+          </span>
+        </div>
+
+        <div class="glass-card rounded-2xl p-5 border-amber-500/40 hover:border-amber-400 transition">
+          <div class="w-9 h-9 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center mb-3">
+            <i class="fa-solid fa-cow text-lg"></i>
+          </div>
+          <div class="text-xs font-mono font-bold text-amber-400 uppercase">Tier 3: Repurpose</div>
+          <h3 class="text-base font-bold text-slate-100 mt-1 mb-2">Animal Feed Network</h3>
+          <p class="text-xs text-slate-400 leading-relaxed mb-4">
+            Safe vegetable trimmings, peels, and bakery leftovers diverted directly to local dairy farms and animal sanctuaries.
+          </p>
+          <span class="text-[11px] font-mono text-amber-300 bg-amber-950/60 px-2 py-0.5 rounded border border-amber-800">
+            ✓ Feed Security
+          </span>
+        </div>
+
+        <div class="glass-card rounded-2xl p-5 border-purple-500/40 hover:border-purple-400 transition">
+          <div class="w-9 h-9 rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center mb-3">
+            <i class="fa-solid fa-seedling text-lg"></i>
+          </div>
+          <div class="text-xs font-mono font-bold text-purple-400 uppercase">Tier 4: Regenerate</div>
+          <h3 class="text-base font-bold text-slate-100 mt-1 mb-2">Biogas & Composting</h3>
+          <p class="text-xs text-slate-400 leading-relaxed mb-4">
+            Spoiled inedible organic matter directed to biomethanation plants for clean power and organic nutrient soil compost.
+          </p>
+          <span class="text-[11px] font-mono text-purple-300 bg-purple-950/60 px-2 py-0.5 rounded border border-purple-800">
+            ✓ Renewable Energy
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 4: Technical Approach -->
+  <section class="slide justify-center" id="slide-4">
+    <div class="max-w-6xl mx-auto w-full pt-6">
+      <div class="inline-block mb-2 px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 text-xs font-bold tracking-wider">
+        TECHNICAL APPROACH & SYSTEM ARCHITECTURE
+      </div>
+      <h2 class="text-4xl font-extrabold tracking-tight mb-2">End-to-End Engineering Stack</h2>
+      <p class="text-slate-400 text-sm mb-6">Cross-platform PWA with offline-first service worker, geofencing, and deterministic nutrition pipeline.</p>
+
+      <div class="grid grid-cols-12 gap-6">
+        <div class="col-span-6 glass-card rounded-2xl p-6 border-slate-700">
+          <h3 class="text-xs font-mono font-bold text-cyan-400 uppercase tracking-wider mb-4 flex items-center gap-2">
+            <i class="fa-solid fa-cubes"></i> Core Architectural Stack
+          </h3>
+          <div class="space-y-3.5 text-xs text-slate-300">
+            <div class="flex items-start gap-3">
+              <span class="px-2 py-1 rounded bg-slate-800 font-mono text-emerald-400 border border-slate-700">Frontend</span>
+              <p><strong>React 18 + TypeScript + Tailwind CSS:</strong> High-performance Progressive Web App with sub-second responsive layout.</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="px-2 py-1 rounded bg-slate-800 font-mono text-teal-400 border border-slate-700">Offline PWA</span>
+              <p><strong>Service Worker Caching (v2):</strong> Zero-latency catalog browsing and offline donation drafting during network dropouts.</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="px-2 py-1 rounded bg-slate-800 font-mono text-amber-400 border border-slate-700">Data Source</span>
+              <p><strong>USDA FoodData Central SR:</strong> Exact nutritional baseline mapping without LLM hallucination.</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="px-2 py-1 rounded bg-slate-800 font-mono text-blue-400 border border-slate-700">Location API</span>
+              <p><strong>HTML5 Geolocation API:</strong> Computes geodesic great-circle distances for radius-bounded volunteer dispatch.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-span-6 glass-card rounded-2xl p-6 border-slate-700">
+          <h3 class="text-xs font-mono font-bold text-emerald-400 uppercase tracking-wider mb-4 flex items-center gap-2">
+            <i class="fa-solid fa-network-wired"></i> Process Pipeline Flow
+          </h3>
+          <div class="space-y-3 text-xs">
+            <div class="flex items-center gap-3 bg-slate-900/60 p-2.5 rounded-xl border border-slate-800">
+              <div class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 font-mono text-xs flex items-center justify-center font-bold">1</div>
+              <div><strong class="text-slate-100">Surplus Registration:</strong> Donor logs quantity, prep timestamp & photo scan.</div>
+            </div>
+            <div class="flex items-center gap-3 bg-slate-900/60 p-2.5 rounded-xl border border-slate-800">
+              <div class="w-6 h-6 rounded-full bg-teal-500/20 text-teal-400 font-mono text-xs flex items-center justify-center font-bold">2</div>
+              <div><strong class="text-slate-100">AI Safety Gate:</strong> Validates shelf-life, allergens, and cold-chain compliance.</div>
+            </div>
+            <div class="flex items-center gap-3 bg-slate-900/60 p-2.5 rounded-xl border border-slate-800">
+              <div class="w-6 h-6 rounded-full bg-amber-500/20 text-amber-400 font-mono text-xs flex items-center justify-center font-bold">3</div>
+              <div><strong class="text-slate-100">Automated EPA Routing:</strong> Channeling into Donation, Flash Sale, Feed, or Compost.</div>
+            </div>
+            <div class="flex items-center gap-3 bg-slate-900/60 p-2.5 rounded-xl border border-slate-800">
+              <div class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 font-mono text-xs flex items-center justify-center font-bold">4</div>
+              <div><strong class="text-slate-100">Proximity Dispatch:</strong> Haversine calculation alerts closest active NGO volunteers.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 5: Exact Algorithms -->
+  <section class="slide justify-center" id="slide-5">
+    <div class="max-w-6xl mx-auto w-full pt-6">
+      <div class="inline-block mb-2 px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/30 text-xs font-bold tracking-wider">
+        ALGORITHMIC FORMULATIONS & MATHEMATICAL MODELS
+      </div>
+      <h2 class="text-4xl font-extrabold tracking-tight mb-2">Core Algorithmic Engines</h2>
+      <p class="text-slate-400 text-sm mb-6">Mathematical precision driving proximity dispatch, nutritional mapping, and dynamic markdown pricing.</p>
+
+      <div class="space-y-4">
+        <!-- Algo 1 -->
+        <div class="glass-card rounded-2xl p-4.5 border-emerald-500/30 bg-slate-900/50">
+          <div class="flex items-center justify-between mb-2">
+            <h3 class="text-sm font-bold text-emerald-400 font-mono">1. Haversine Proximity & Dispatch Matching Algorithm</h3>
+            <span class="text-xs font-mono text-slate-400 bg-slate-800 px-2 py-0.5 rounded">Geodesic Distance Engine</span>
+          </div>
+          <div class="grid grid-cols-12 gap-4 text-xs">
+            <div class="col-span-6 bg-slate-950/80 p-3 rounded-xl border border-slate-800 font-mono text-emerald-300">
+              d = 2R · arcsin(√(sin²(Δφ/2) + cos(φ₁)cos(φ₂)sin²(Δλ/2)))<br/>
+              Priority Score = w₁·(1 - d/d_max) + w₂·(1/(T_exp - T_now)) + w₃·U_capacity
+            </div>
+            <div class="col-span-6 text-slate-300 flex items-center">
+              Computes spherical great-circle distance between donor GPS and NGOs within a 5 km geofence. Weight matrix ($w_1, w_2, w_3$) prioritizes urgent perishables for immediate pickup.
+            </div>
+          </div>
+        </div>
+
+        <!-- Algo 2 -->
+        <div class="glass-card rounded-2xl p-4.5 border-teal-500/30 bg-slate-900/50">
+          <div class="flex items-center justify-between mb-2">
+            <h3 class="text-sm font-bold text-teal-400 font-mono">2. Decoupled 2-Stage Vision-to-USDA Pipeline</h3>
+            <span class="text-xs font-mono text-slate-400 bg-slate-800 px-2 py-0.5 rounded">Deterministic Grounding</span>
+          </div>
+          <div class="grid grid-cols-12 gap-4 text-xs">
+            <div class="col-span-6 bg-slate-950/80 p-3 rounded-xl border border-slate-800 font-mono text-teal-300">
+              Stage 1 (Perception): Vision Model → Detected Dish Class + Plate %<br/>
+              Stage 2 (Nutrition): Macro_val = Gram_weight · (USDA_Item_Ref / 100g)
+            </div>
+            <div class="col-span-6 text-slate-300 flex items-center">
+              Decouples visual segmentation from numerical computation. Guarantees 0% LLM arithmetic hallucination by pulling exact calories, proteins, and carbohydrates from USDA Standard Reference.
+            </div>
+          </div>
+        </div>
+
+        <!-- Algo 3 -->
+        <div class="glass-card rounded-2xl p-4.5 border-amber-500/30 bg-slate-900/50">
+          <div class="flex items-center justify-between mb-2">
+            <h3 class="text-sm font-bold text-amber-400 font-mono">3. Dynamic Decay & Markdown Pricing Algorithm</h3>
+            <span class="text-xs font-mono text-slate-400 bg-slate-800 px-2 py-0.5 rounded">Dynamic Pricing Curve</span>
+          </div>
+          <div class="grid grid-cols-12 gap-4 text-xs">
+            <div class="col-span-6 bg-slate-950/80 p-3 rounded-xl border border-slate-800 font-mono text-amber-300">
+              Discount D(t) = D_min + (D_max - D_min) · (1 - t_remaining / T_shelf_life)^γ
+            </div>
+            <div class="col-span-6 text-slate-300 flex items-center">
+              Dynamically increases discounts as closing hour nears ($\gamma > 1$), triggering high-velocity clearance before food turns non-commercial while preserving merchant recovery revenue.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 6: AI Models -->
+  <section class="slide justify-center" id="slide-6">
+    <div class="max-w-6xl mx-auto w-full pt-6">
+      <div class="inline-block mb-2 px-3 py-1 rounded-full bg-violet-500/10 text-violet-400 border border-violet-500/30 text-xs font-bold tracking-wider">
+        AI TYPES & MACHINE LEARNING ARCHITECTURE
+      </div>
+      <h2 class="text-4xl font-extrabold tracking-tight mb-2">How AI is Integrated in Foodzyra</h2>
+      <p class="text-slate-400 text-sm mb-6">Multi-modal AI models powering perception, decision logic, demand prediction, and automated alerts.</p>
+
+      <div class="grid grid-cols-4 gap-4">
+        <div class="glass-card rounded-2xl p-5 border-emerald-500/30">
+          <div class="text-emerald-400 font-mono text-xs font-bold mb-1">01 • COMPUTER VISION</div>
+          <h3 class="text-base font-bold text-slate-100 mb-2">Multimodal CNN & ViT</h3>
+          <ul class="text-xs text-slate-400 space-y-2 leading-relaxed">
+            <li>• Plate scanning & dish recognition from smartphone camera.</li>
+            <li>• Automated portion & area bounding boundary segmentation.</li>
+            <li>• Visual freshness score estimation to prevent spoilage.</li>
+          </ul>
+        </div>
+
+        <div class="glass-card rounded-2xl p-5 border-teal-500/30">
+          <div class="text-teal-400 font-mono text-xs font-bold mb-1">02 • DECISION AI</div>
+          <h3 class="text-base font-bold text-slate-100 mb-2">Expert Rule Engine</h3>
+          <ul class="text-xs text-slate-400 space-y-2 leading-relaxed">
+            <li>• Multi-criteria decision tree for EPA 4-tier channel routing.</li>
+            <li>• Automated food hygiene & shelf-life threshold verification.</li>
+            <li>• Zero compliance errors before public listing on marketplace.</li>
+          </ul>
+        </div>
+
+        <div class="glass-card rounded-2xl p-5 border-amber-500/30">
+          <div class="text-amber-400 font-mono text-xs font-bold mb-1">03 • PREDICTIVE AI</div>
+          <h3 class="text-base font-bold text-slate-100 mb-2">Regression Models</h3>
+          <ul class="text-xs text-slate-400 space-y-2 leading-relaxed">
+            <li>• Time-series forecasting for restaurant surplus peaks.</li>
+            <li>• Discount degradation parameter optimization.</li>
+            <li>• Predictive NGO demand heatmaps avoiding donation gluts.</li>
+          </ul>
+        </div>
+
+        <div class="glass-card rounded-2xl p-5 border-blue-500/30">
+          <div class="text-blue-400 font-mono text-xs font-bold mb-1">04 • NATURAL LANGUAGE</div>
+          <h3 class="text-base font-bold text-slate-100 mb-2">Intent & Alert NLP</h3>
+          <ul class="text-xs text-slate-400 space-y-2 leading-relaxed">
+            <li>• Parsing unstructured donation text into standardized items.</li>
+            <li>• Auto-generating concise volunteer dispatch SMS notifications.</li>
+            <li>• Multilingual support for diverse community workers.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 7: Feasibility & Viability -->
+  <section class="slide justify-center" id="slide-7">
+    <div class="max-w-6xl mx-auto w-full pt-6">
+      <div class="inline-block mb-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 text-xs font-bold tracking-wider">
+        FEASIBILITY & RISK MITIGATION
+      </div>
+      <h2 class="text-4xl font-extrabold tracking-tight mb-2">Operational Viability & Safety Safeguards</h2>
+      <p class="text-slate-400 text-sm mb-6">Designed for rapid adoption across college campuses, food courts, hotels, and municipal hunger shelters.</p>
+
+      <div class="grid grid-cols-12 gap-6">
+        <div class="col-span-6 glass-card rounded-2xl p-6 border-slate-700">
+          <h3 class="text-xs font-mono font-bold text-emerald-400 uppercase tracking-wider mb-4 flex items-center gap-2">
+            <i class="fa-solid fa-circle-check"></i> Platform Feasibility
+          </h3>
+          <div class="space-y-3.5 text-xs text-slate-300">
+            <div>
+              <strong class="text-slate-100 block mb-1">Zero-Friction Web/PWA Access:</strong>
+              No heavy downloads or app-store gatekeepers. Loads instantly on any smartphone with &lt;2 MB bundle size.
+            </div>
+            <div>
+              <strong class="text-slate-100 block mb-1">Offline-First Resilience:</strong>
+              Service worker caching allows restaurant staff to draft food listings even in basement kitchens without signal.
+            </div>
+            <div>
+              <strong class="text-slate-100 block mb-1">Modular Scalability:</strong>
+              Lightweight micro-architecture easily scales from university campuses to entire municipal food networks.
+            </div>
+          </div>
+        </div>
+
+        <div class="col-span-6 glass-card rounded-2xl p-6 border-slate-700">
+          <h3 class="text-xs font-mono font-bold text-amber-400 uppercase tracking-wider mb-4 flex items-center gap-2">
+            <i class="fa-solid fa-shield-halved"></i> Risk Mitigation & Safety
+          </h3>
+          <div class="space-y-3.5 text-xs text-slate-300">
+            <div>
+              <strong class="text-slate-100 block mb-1">Food Safety & Liability:</strong>
+              Mandatory prep timestamps, strict perishable expiry windows, and alignment with Good Samaritan legal protections.
+            </div>
+            <div>
+              <strong class="text-slate-100 block mb-1">Last-Mile Transit Delays:</strong>
+              Geofenced dispatch triggers pings only to verified volunteers within an optimal 3–5 km radius.
+            </div>
+            <div>
+              <strong class="text-slate-100 block mb-1">Quality Verification:</strong>
+              Dual-party cryptographic 6-digit claim tokens ensure food handovers are verified before ledger updates.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 8: Impact & SDGs -->
+  <section class="slide justify-center" id="slide-8">
+    <div class="max-w-6xl mx-auto w-full pt-6">
+      <div class="inline-block mb-2 px-3 py-1 rounded-full bg-teal-500/10 text-teal-400 border border-teal-500/30 text-xs font-bold tracking-wider">
+        IMPACT & SUSTAINABILITY METRICS
+      </div>
+      <h2 class="text-4xl font-extrabold tracking-tight mb-2">Measurable Social, Environmental & Economic Impact</h2>
+      <p class="text-slate-400 text-sm mb-6">Direct alignment with the United Nations 2030 Sustainable Development Goals.</p>
+
+      <div class="grid grid-cols-3 gap-5 mb-6">
+        <div class="glass-card rounded-2xl p-5 border-emerald-500/40">
+          <div class="text-emerald-400 text-xs font-mono font-bold mb-1">SOCIAL IMPACT</div>
+          <h3 class="text-lg font-bold text-slate-100 mb-2">Direct Hunger Relief</h3>
+          <ul class="text-xs text-slate-400 space-y-1.5 leading-relaxed">
+            <li>• Real-time meal rescue ledger for orphanages & shelters.</li>
+            <li>• Dignified, affordable access to nutritious food.</li>
+            <li>• Community volunteer empowerment.</li>
+          </ul>
+        </div>
+
+        <div class="glass-card rounded-2xl p-5 border-teal-500/40">
+          <div class="text-teal-400 text-xs font-mono font-bold mb-1">ENVIRONMENTAL IMPACT</div>
+          <h3 class="text-lg font-bold text-slate-100 mb-2">Carbon & Methane Cuts</h3>
+          <ul class="text-xs text-slate-400 space-y-1.5 leading-relaxed">
+            <li>• 1 kg rescued food ≈ 2.5 kg CO2e emissions avoided.</li>
+            <li>• Eliminates rotting organic matter in municipal landfills.</li>
+            <li>• Conserves embedded agricultural water and energy.</li>
+          </ul>
+        </div>
+
+        <div class="glass-card rounded-2xl p-5 border-amber-500/40">
+          <div class="text-amber-400 text-xs font-mono font-bold mb-1">ECONOMIC IMPACT</div>
+          <h3 class="text-lg font-bold text-slate-100 mb-2">Circular Value Recovery</h3>
+          <ul class="text-xs text-slate-400 space-y-1.5 leading-relaxed">
+            <li>• Recovers lost revenue for restaurants & grocers.</li>
+            <li>• 50–70% budget savings for consumers.</li>
+            <li>• ESG compliance ratings & corporate tax credits.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="glass-card rounded-2xl p-4 border-slate-700">
+        <div class="text-xs font-mono font-bold text-emerald-400 uppercase mb-2">UN Sustainable Development Goals (SDGs) Target Alignment</div>
+        <div class="grid grid-cols-4 gap-3 text-xs">
+          <div class="bg-slate-900/60 p-2 rounded-xl border border-slate-800 text-slate-300">
+            <strong class="text-emerald-400 block">SDG 2: Zero Hunger</strong> Diverting safe surplus to food-insecure individuals.
+          </div>
+          <div class="bg-slate-900/60 p-2 rounded-xl border border-slate-800 text-slate-300">
+            <strong class="text-teal-400 block">SDG 12.3: 50% Waste Cut</strong> Halving per-capita consumer food waste by 2030.
+          </div>
+          <div class="bg-slate-900/60 p-2 rounded-xl border border-slate-800 text-slate-300">
+            <strong class="text-amber-400 block">SDG 13: Climate Action</strong> Slashing fugitive methane emissions from landfills.
+          </div>
+          <div class="bg-slate-900/60 p-2 rounded-xl border border-slate-800 text-slate-300">
+            <strong class="text-indigo-400 block">SDG 17: Partnerships</strong> Uniting donors, NGOs, volunteers & bio-recyclers.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 9: References & Conclusion -->
+  <section class="slide justify-center" id="slide-9">
+    <div class="max-w-6xl mx-auto w-full pt-6">
+      <div class="inline-block mb-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 text-xs font-bold tracking-wider">
+        RESEARCH & REFERENCES
+      </div>
+      <h2 class="text-4xl font-extrabold tracking-tight mb-2">Academic Grounding & Standards</h2>
+      <p class="text-slate-400 text-sm mb-6">Built upon peer-reviewed frameworks and international environmental benchmarks.</p>
+
+      <div class="glass-card rounded-2xl p-6 border-slate-700 mb-6">
+        <div class="space-y-3.5 text-xs text-slate-300">
+          <div class="flex items-start gap-3">
+            <span class="px-2 py-0.5 rounded bg-emerald-950/80 text-emerald-400 font-mono border border-emerald-800">1</span>
+            <div>
+              <strong class="text-slate-100">Food and Agriculture Organization (FAO)</strong> — <em>The State of Food and Agriculture: Moving forward on food loss and waste reduction</em>, Rome (2019/2023).
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="px-2 py-0.5 rounded bg-teal-950/80 text-teal-400 font-mono border border-teal-800">2</span>
+            <div>
+              <strong class="text-slate-100">United Nations Environment Programme (UNEP)</strong> — <em>Food Waste Index Report 2024: Think Eat Save</em>, Tracking global progress toward SDG Target 12.3.
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="px-2 py-0.5 rounded bg-amber-950/80 text-amber-400 font-mono border border-amber-800">3</span>
+            <div>
+              <strong class="text-slate-100">United States Environmental Protection Agency (US EPA)</strong> — <em>From Field to Table: Understanding the Food Recovery Hierarchy and Wasted Food Scale</em> (EPA 530-R-23-005, 2023).
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="px-2 py-0.5 rounded bg-blue-950/80 text-blue-400 font-mono border border-blue-800">4</span>
+            <div>
+              <strong class="text-slate-100">USDA Agricultural Research Service (ARS)</strong> — <em>FoodData Central Standard Reference Legacy Database</em> for deterministic macro & calorie mapping (2024).
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="px-2 py-0.5 rounded bg-purple-950/80 text-purple-400 font-mono border border-purple-800">5</span>
+            <div>
+              <strong class="text-slate-100">Team ULTRONATE Technical Report</strong> — <em>Foodzyra: AI-Powered Multi-Tier Circular Bioeconomy Framework for Surplus Food Rescue</em> (CIET AI & DS Department, 2026).
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex items-center justify-between p-5 rounded-2xl bg-gradient-to-r from-emerald-950/60 to-teal-950/60 border border-emerald-500/30">
+        <div>
+          <h3 class="text-lg font-bold text-slate-100">Thank You!</h3>
+          <p class="text-xs text-slate-400">Team ULTRONATE • Department of Artificial Intelligence & Data Science, CIET</p>
+        </div>
+        <div class="text-xs font-mono text-emerald-400 font-semibold px-4 py-2 rounded-xl bg-emerald-500/10 border border-emerald-500/20">
+          Open for Questions & Discussion 🚀
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bottom Navigation controls -->
+  <nav class="no-print absolute bottom-0 left-0 right-0 h-16 px-8 flex items-center justify-between border-t border-slate-800/80 bg-slate-950/70 backdrop-blur-md z-50">
+    <div class="text-xs text-slate-400 flex items-center gap-2">
+      <span class="px-2 py-0.5 rounded bg-slate-800 border border-slate-700 font-mono text-[10px]">← / →</span> or <span class="px-2 py-0.5 rounded bg-slate-800 border border-slate-700 font-mono text-[10px]">Space</span> to navigate
+    </div>
+    <div class="flex items-center gap-3">
+      <button onclick="prevSlide()" class="px-4 py-2 text-xs font-semibold rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition flex items-center gap-2">
+        <i class="fa-solid fa-chevron-left"></i> Previous
+      </button>
+      <button onclick="nextSlide()" class="px-5 py-2 text-xs font-bold rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 transition flex items-center gap-2 shadow-lg shadow-emerald-500/20">
+        Next <i class="fa-solid fa-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+
+  <script>
+    let currentSlide = 1;
+    const totalSlides = 9;
+
+    function showSlide(n) {
+      if (n < 1) n = 1;
+      if (n > totalSlides) n = totalSlides;
+      currentSlide = n;
+
+      for (let i = 1; i <= totalSlides; i++) {
+        const slide = document.getElementById(`slide-${i}`);
+        if (slide) {
+          slide.classList.remove('active');
+          if (i === currentSlide) slide.classList.add('active');
+        }
+      }
+
+      const counter = document.getElementById('slideCounter');
+      if (counter) counter.innerText = `Slide ${currentSlide} / ${totalSlides}`;
+    }
+
+    function nextSlide() {
+      if (currentSlide < totalSlides) showSlide(currentSlide + 1);
+    }
+
+    function prevSlide() {
+      if (currentSlide > 1) showSlide(currentSlide - 1);
+    }
+
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(() => {});
+      } else {
+        if (document.exitFullscreen) document.exitFullscreen();
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+        nextSlide();
+      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        prevSlide();
+      } else if (e.key === 'f' || e.key === 'F') {
+        toggleFullscreen();
+      }
+    });
+  </script>
+</body>
+</html>
